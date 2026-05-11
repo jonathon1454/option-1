@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Tickets Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Dashboard View -->
+    <div id="dashboard-view" class="view active">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <h1>Support Tickets Dashboard</h1>
+                <p class="subtitle">Track and monitor support ticket status</p>
+            </header>
+
+            <button class="filter-button" id="filterButton">
+                <span class="filter-icon">⚙</span>
+                <span>Filter Tickets</span>
+            </button>
+
+            <div class="metrics-row">
+                <div class="metric-card" id="openTicketsCard">
+                    <div class="metric-label">Open Tickets</div>
+                    <div class="metric-value open">127</div>
+                </div>
+                <div class="metric-card" id="closedTicketsCard">
+                    <div class="metric-label">Closed Tickets</div>
+                    <div class="metric-value closed">342</div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h2>Ticket Status Comparison</h2>
+                <div class="bars-container">
+                    <div class="bar-row" id="openBar">
+                        <div class="bar-label">Open</div>
+                        <div class="bar-track">
+                            <div class="bar-fill open" style="width: 27.1%"></div>
+                        </div>
+                        <div class="bar-value">127</div>
+                        <div class="tooltip" id="openTooltip">
+                            <div class="tooltip-label">Open Tickets</div>
+                            <div class="tooltip-value">127 tickets (27.1%)</div>
+                            <div class="tooltip-detail">Last updated: 5 mins ago</div>
+                        </div>
+                    </div>
+                    <div class="bar-row" id="closedBar">
+                        <div class="bar-label">Closed</div>
+                        <div class="bar-track">
+                            <div class="bar-fill closed" style="width: 72.9%"></div>
+                        </div>
+                        <div class="bar-value">342</div>
+                        <div class="tooltip" id="closedTooltip">
+                            <div class="tooltip-label">Closed Tickets</div>
+                            <div class="tooltip-value">342 tickets (72.9%)</div>
+                            <div class="tooltip-detail">Avg resolution time: 4.2 hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open Tickets Detail View -->
+    <div id="open-tickets-view" class="view">
+        <div class="dashboard-container">
+            <button class="back-button" onclick="showView('dashboard')">
+                <span>←</span> Back to Dashboard
+            </button>
+
+            <header class="dashboard-header">
+                <h1>Open Tickets</h1>
+                <p class="subtitle">127 tickets currently open</p>
+            </header>
+
+            <div class="ticket-list">
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id open">TICK-1234</span>
+                        <span class="priority-badge high">High</span>
+                        <span class="ticket-age">2h ago</span>
+                    </div>
+                    <div class="ticket-subject">Login page not loading</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id open">TICK-1235</span>
+                        <span class="priority-badge critical">Critical</span>
+                        <span class="ticket-age">4h ago</span>
+                    </div>
+                    <div class="ticket-subject">Payment gateway timeout</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id open">TICK-1236</span>
+                        <span class="priority-badge medium">Medium</span>
+                        <span class="ticket-age">1d ago</span>
+                    </div>
+                    <div class="ticket-subject">Dashboard metrics incorrect</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id open">TICK-1237</span>
+                        <span class="priority-badge low">Low</span>
+                        <span class="ticket-age">2d ago</span>
+                    </div>
+                    <div class="ticket-subject">Email notifications delayed</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id open">TICK-1238</span>
+                        <span class="priority-badge high">High</span>
+                        <span class="ticket-age">3h ago</span>
+                    </div>
+                    <div class="ticket-subject">Mobile app crash on iOS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Closed Tickets Detail View -->
+    <div id="closed-tickets-view" class="view">
+        <div class="dashboard-container">
+            <button class="back-button" onclick="showView('dashboard')">
+                <span>←</span> Back to Dashboard
+            </button>
+
+            <header class="dashboard-header">
+                <h1>Closed Tickets</h1>
+                <p class="subtitle">342 tickets resolved</p>
+            </header>
+
+            <div class="ticket-list">
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id closed">TICK-1140</span>
+                        <span class="resolved-badge">✓ Resolved</span>
+                        <span class="ticket-age">Yesterday</span>
+                    </div>
+                    <div class="ticket-subject">Reset password link expired</div>
+                    <div class="ticket-agent">Resolved by Sarah K.</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id closed">TICK-1128</span>
+                        <span class="resolved-badge">✓ Resolved</span>
+                        <span class="ticket-age">2 days ago</span>
+                    </div>
+                    <div class="ticket-subject">Invoice PDF download issue</div>
+                    <div class="ticket-agent">Resolved by Mike T.</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id closed">TICK-1115</span>
+                        <span class="resolved-badge">✓ Resolved</span>
+                        <span class="ticket-age">3 days ago</span>
+                    </div>
+                    <div class="ticket-subject">Unable to add payment method</div>
+                    <div class="ticket-agent">Resolved by Anna L.</div>
+                </div>
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <span class="ticket-id closed">TICK-1089</span>
+                        <span class="resolved-badge">✓ Resolved</span>
+                        <span class="ticket-age">1 week ago</span>
+                    </div>
+                    <div class="ticket-subject">Dashboard loading slowly</div>
+                    <div class="ticket-agent">Resolved by Tom R.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Panel Overlay -->
+    <div id="filterPanel" class="filter-panel">
+        <div class="filter-content">
+            <h3>Filter Options</h3>
+
+            <div class="filter-section">
+                <div class="filter-label">Date Range</div>
+                <label class="filter-option">
+                    <input type="checkbox" name="date" value="today">
+                    <span>Today</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="date" value="week">
+                    <span>Last 7 days</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="date" value="month">
+                    <span>Last 30 days</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="date" value="all">
+                    <span>All time</span>
+                </label>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-label">Status</div>
+                <label class="filter-option">
+                    <input type="checkbox" name="status" value="open">
+                    <span>Open</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="status" value="closed">
+                    <span>Closed</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="status" value="pending">
+                    <span>Pending</span>
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="status" value="progress">
+                    <span>In Progress</span>
+                </label>
+            </div>
+
+            <button class="apply-button">Apply Filters</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
